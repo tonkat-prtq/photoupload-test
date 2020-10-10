@@ -1,5 +1,5 @@
 <h1>登録ページ</h1>
-{!! Form::open(['route'=>'users.store','enctype'=>'multipart/form-data']) !!}
+{!! Form::open(['route'=>'users.store','enctype'=>"multipart/form-data"]) !!}
 <div class='form-group'>
     {!! Form::label('name', '名前') !!}
     {!! Form::text('name',old('name'),['class'=>'form-control']) !!}
