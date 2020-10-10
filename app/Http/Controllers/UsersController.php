@@ -40,7 +40,7 @@ class UsersController extends Controller
             $path = $file->store('uploads');
         }
 
-        $request->user()->create([
+        \App\User::create([
             'name' => $request->input('name'),
             'file_path' => $path,
         ]);
