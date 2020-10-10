@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -13,7 +15,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $users = User::all();
+        return view('users.index', ['users' => $users]);
     }
 
     /**
@@ -36,7 +39,7 @@ class UsersController extends Controller
     {
         $request->validate([
             'name'=>['required','string','max:255'],
-            'path'=>['file','mimes:jpeg,png,jpg,bmb','max:2048'],
+            'file_path'=>['file','mimes:jpeg,png,jpg,bmb','max:2048'],
         ]);
 
         $path = '';
