@@ -1,0 +1,1 @@
+<img src="{{ $user->file_path }}">
