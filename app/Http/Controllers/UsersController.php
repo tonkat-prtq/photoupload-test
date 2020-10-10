@@ -34,15 +34,18 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $path = ''; // $pathという変数を定義
+        $request->validate([
+            'name'=>['required','string','max:255'],
+            'path'=>['file','mimes:jpeg,png,jpg,bmb','max:2048'],
+        ]);
 
-        if ($file = $request->file_path) {
+        $path = '';
+        if($file = $request->file_path){
             $path = $file->store('uploads');
         }
-
         \App\User::create([
-            'name' => $request->input('name'),
-            'file_path' => $path,
+            'name'=>$request->input('name'),
+            'file_path'=> $path,
         ]);
     }
 
