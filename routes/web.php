@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('users', 'UsersController', [
+    'only' => [
+        'index',
+        'create',
+        'store'
+    ]
+]);
