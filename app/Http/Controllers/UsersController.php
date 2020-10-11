@@ -77,7 +77,19 @@ class UsersController extends Controller
             'file_path'=> $path,
         ]);
 
+        // リダイレクト処理が行われる
+        // web.phpに書いたルーティング情報を見に行く
+        // users.indexに対応するコントローラのアクションメソッドを実行
+        // その結果、上のindexアクションメソッド内にreturn view('users.index')と記述しているので、
+        // views/users/index.blade.phpが表示される
         return redirect()->route('users.index');
+
+        /*
+        [補足]
+        return view('users.index')は、該当するディレクトリに保存されているファイルを呼び出し、ブラウザに表示させているだけ
+        なので、もし上のコードをreturn view('users.index')に書き換えた場合、
+        indexアクションメソッドが実行されない?
+        */
     }
 
     /**
