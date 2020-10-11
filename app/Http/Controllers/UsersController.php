@@ -16,6 +16,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
+        dd($users);
         return view('users.index', ['users' => $users]);
     }
 
@@ -45,11 +46,16 @@ class UsersController extends Controller
         $path = '';
         if($file = $request->file_path){
             $path = $file->store('uploads');
-        }
+        } 
+
+        // dd($path, $request->file_path);
+
         \App\User::create([
             'name'=>$request->input('name'),
             'file_path'=> $path,
         ]);
+
+        return redirect()->route('users.index');
     }
 
     /**
